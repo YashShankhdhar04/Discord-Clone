@@ -1,24 +1,39 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-
-import RegisterPage from "./authPages/RegisterPage/RegisterPage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import LoginPage from "./authPages/LoginPage/LoginPage";
+import RegisterPage from "./authPages/RegisterPage/RegisterPage";
 import Dashboard from "./Dashboard/Dashboard";
-import AlertNotification from "../src/shared/Components/AlertNotification";
-import { Navigate, Route, Routes } from "react-router-dom";
-export default function App() {
+import AlertNotification from "./shared/components/AlertNotification";
+
+import "./App.css";
+
+function App() {
   return (
     <>
-      {/* <h1>hello</h1> */}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-      </BrowserRouter>
+      <Router>
+        <Switch>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact path="/register">
+            <RegisterPage />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route path="/">
+            <Redirect to="/dashboard" />
+          </Route>
+        </Switch>
+      </Router>
       <AlertNotification />
     </>
   );
 }
+
+export default App;

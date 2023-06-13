@@ -1,8 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import CustomPrimaryButton from "../../shared/components/CustomPrimaryButton";
+import RedirectInfo from "../../shared/components/RedirectInfo";
+import { useHistory } from "react-router-dom";
 import { Tooltip } from "@mui/material";
-import CustomPrimaryButton from "../../shared/Components/CustomPrimayButton";
-import RedirectInfo from "../../shared/Components/RedirectInfo";
 
 const getFormNotValidMessage = () => {
   return "Enter correct e-mail address and password should contains between 6 and 12 characters";
@@ -13,10 +13,10 @@ const getFormValidMessage = () => {
 };
 
 const LoginPageFooter = ({ handleLogin, isFormValid }) => {
-  const history = useNavigate();
+  const history = useHistory();
 
   const handlePushToRegisterPage = () => {
-    history("/register");
+    history.push("/register");
   };
 
   return (

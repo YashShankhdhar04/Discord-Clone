@@ -2,8 +2,8 @@ import axios from "axios";
 import { logout } from "./shared/utils/auth";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5002/api",
-  timeout: 1000,
+  baseURL: "https://weba-service-discord.onrender.com/api",
+  timeout: 5000,
 });
 
 apiClient.interceptors.request.use(
@@ -47,16 +47,46 @@ export const register = async (data) => {
 };
 
 // secure routes
+export const sendFriendInvitation = async (data) => {
+  try {
+    return await apiClient.post("/friend-invitation/invite", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
 
-export const checkResponseCode = (exception) => {
+export const acceptFriendInvitation = async (data) => {
+  try {
+    return await apiClient.post("/friend-invitation/accept", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
+export const rejectFriendInvitation = async (data) => {
+  try {
+    return await apiClient.post("/friend-invitation/reject", data);
+  } catch (exception) {
+    checkResponseCode(exception);
+    return {
+      error: true,
+      exception,
+    };
+  }
+};
+
+const checkResponseCode = (exception) => {
   const responseCode = exception?.response?.status;
 
   if (responseCode) {
     (responseCode === 401 || responseCode === 403) && logout();
   }
 };
-
-
-
-
-

@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@mui/material";
+import { styled } from "@mui/system";
 
 const Wrapper = styled("div")({
   display: "flex",
@@ -26,7 +26,7 @@ const Input = styled("input")({
   fontSize: "16px",
   padding: "0 5px",
 });
- 
+
 const InputWithLabel = (props) => {
   const { value, setValue, label, type, placeholder } = props;
 
@@ -48,4 +48,3 @@ const InputWithLabel = (props) => {
 };
 
 export default InputWithLabel;
-

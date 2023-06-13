@@ -1,5 +1,4 @@
 import React from "react";
-
 import { styled } from "@mui/system";
 
 const AvatarPreview = styled("div")({
@@ -12,7 +11,6 @@ const AvatarPreview = styled("div")({
   justifyContent: "center",
   fontSize: "20px",
   fontWeight: "700",
-  marginLeft: "5px",
   color: "white",
 });
 
@@ -23,4 +21,5 @@ const Avatar = ({ username, large }) => {
     </AvatarPreview>
   );
 };
+
 export default Avatar;

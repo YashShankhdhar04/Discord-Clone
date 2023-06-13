@@ -13,7 +13,7 @@ export const validateRegisterForm = ({ mail, password, username }) => {
   );
 };
 
-export const  validatePassword = (password) => {
+const validatePassword = (password) => {
   return password.length > 5 && password.length < 13;
 };
 

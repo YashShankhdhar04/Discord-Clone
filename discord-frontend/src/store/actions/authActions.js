@@ -1,6 +1,5 @@
 import * as api from "../../api";
 import { openAlertMessage } from "./alertActions";
-// const autActions = {};
 
 export const authActions = {
   SET_USER_DETAILS: "AUTH.SET_USER_DETAILS",
@@ -11,12 +10,11 @@ export const getActions = (dispatch) => {
     login: (userDetails, history) => dispatch(login(userDetails, history)),
     register: (userDetails, history) =>
       dispatch(register(userDetails, history)),
-      setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
-
+    setUserDetails: (userDetails) => dispatch(setUserDetails(userDetails)),
   };
 };
 
- export const setUserDetails = (userDetails) => {
+const setUserDetails = (userDetails) => {
   return {
     type: authActions.SET_USER_DETAILS,
     userDetails,
@@ -34,7 +32,7 @@ const login = (userDetails, history) => {
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));
-      history("/dashboard");
+      history.push("/dashboard");
     }
   };
 };
@@ -50,7 +48,7 @@ const register = (userDetails, history) => {
       localStorage.setItem("user", JSON.stringify(userDetails));
 
       dispatch(setUserDetails(userDetails));
-      history("/dashboard");
+      history.push("/dashboard");
     }
   };
 };

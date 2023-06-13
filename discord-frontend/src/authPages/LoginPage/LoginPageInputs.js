@@ -1,6 +1,6 @@
 import React from "react";
-// import InputWithLabel from "../../shared/Components/InputWithLabel";
-import InputWithLabel from "../../shared/Components/InputWithLabel";
+import InputWithLabel from "../../shared/components/InputWithLabel";
+
 const LoginPageInputs = ({ mail, setMail, password, setPassword }) => {
   return (
     <>
